@@ -2,7 +2,7 @@
 A simple Python Code to change the mac for linux based operating systems
 
 Usage: 
-python Mac _changer.py -i [interface] -m [new_mac]
+python Mac _changer_linux.py -i [interface] -m [new_mac]
 
 
 Interface:

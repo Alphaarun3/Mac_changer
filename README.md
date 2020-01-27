@@ -6,7 +6,6 @@ python Mac _changer.py -i [interface] -m [new_mac]
 
 
 Interface:
-Example,
 eth0, wlan0, etc.,
 
 

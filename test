@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Access a JavaScript Object</h2>
+<p id="demo"></p>
+
+<script>
+const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+function generateString(length) {
+    let result = ' ';
+    const charactersLength = characters.length;
+    for ( let i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    return result;
+}
+
+console.log(generateString(5));
+
+random_key = 'arun'
+const myJSON = '{"name":"Success+arun"}';
+const myObj = JSON.parse(myJSON);
+name = myObj["name"]
+split_value = name.split("+")
+
+if (split_value[1] == random_key) {
+  if (split_value[0] == 'Success'){
+    document.getElementById("demo").innerHTML ="LoginSuccessfull";
+      random_key = 'new'
+    
+  }
+  else{
+  document.getElementById("demo").innerHTML = myObj["name"];
+  }
+}
+else{
+alert(random_key)
+}
+
+
+
+</script>
+
+</body>
+</html>

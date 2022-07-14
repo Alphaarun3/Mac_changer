@@ -9,7 +9,7 @@
 const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
 function generateString(length) {
-    let result = ' ';
+    let result = '';
     const charactersLength = characters.length;
     for ( let i = 0; i < length; i++ ) {
         result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -18,27 +18,49 @@ function generateString(length) {
     return result;
 }
 
-console.log(generateString(5));
-
+new_random_key = generateString(5)
 random_key = 'arun'
-const myJSON = '{"name":"Success+arun"}';
-const myObj = JSON.parse(myJSON);
-name = myObj["name"]
-split_value = name.split("+")
+fetch_url = 'http://127.0.0.1:5000/home/'+new_random_key;
+console.log("FetchURL " + fetch_url)
 
-if (split_value[1] == random_key) {
-  if (split_value[0] == 'Success'){
-    document.getElementById("demo").innerHTML ="LoginSuccessfull";
-      random_key = 'new'
+
+//need to create a connection to the api using ajaz
+var xhttp = new XMLHttpRequest();
+xhttp.open("GET", fetch_url, true);
+xhttp.send()
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      result =  JSON.parse(this.responseText);
+      name = result["data"]
+      console.log("Secret Key " + name);
+      split_value = name.split("+")
+      
     
-  }
-  else{
-  document.getElementById("demo").innerHTML = myObj["name"];
-  }
-}
-else{
-alert(random_key)
-}
+
+    if (split_value[1] == new_random_key) {
+        alert("Token vertified")
+        if (split_value[0] == 'Success'){
+            document.getElementById("demo").innerHTML ="LoginSuccessfull";            
+        }
+        else{
+        document.getElementById("demo").innerHTML = myObj["name"];
+        }
+    }
+    else{
+    alert("Token Mismatched")
+    }
+    }
+  };
+//xhttp.getResponseHeader("Content-type", "application/json");
+
+//const obj = JSON.parse(this.responseText);
+
+
+
+//const myJSON = '{"name":"Success+arun"}';
+//const myObj = JSON.parse(myJSON);
+//name = myObj["name"]
+
 
 
 
